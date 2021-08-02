@@ -1,16 +1,9 @@
-// import '@babel/polyfill';
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// import path from 'path';
-// import CopyWebpackPlugin from 'copy-webpack-plugin';
-// import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 module.exports = {
   mode: 'development',
-  //   entry: {
-  //     main: ['@babel/polyfill', './src/app/index.js', './src/css/main.scss'],
-  //   },
   entry: './src/index.js',
   output: {
     publicPath: '/',
@@ -41,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{ from: 'src/img', to: 'build/img' }],
+      patterns: [{ from: 'src/img', to: 'img' }],
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
