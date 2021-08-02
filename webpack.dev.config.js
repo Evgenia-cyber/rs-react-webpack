@@ -34,7 +34,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|gif|ico|svg|jpe?g)$/,
+        test: /\.(png|gif|svg|jpe?g)$/,
         type: 'asset/resource',
       },
     ],
@@ -45,6 +45,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      favicon: './src/img/favicon.png',
     }),
   ],
   devtool: 'inline-source-map',
