@@ -7,7 +7,7 @@ export const initFormData = {
   lastName: { value: '', error: '' },
   phone: { value: '', error: '' },
   deliveryDate: { value: '', error: '' },
-  country: { value: options[0], error: '' },
-  gender: { value: genders[0], error: '' },
-  agreeToDataProcessing: { value: false, error: '' },
+  country: { value: options[0] },
+  gender: { value: genders[0] },
+  agreeToDataProcessing: { value: true },
 };

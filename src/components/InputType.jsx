@@ -4,9 +4,9 @@ const InputType = ({ label, name, type, value, handleChange, validate, error }) 
   <label htmlFor={name}>
     <p>
       {label}
-      <span>error message {error}</span>
+      <span>{error}</span>
     </p>
-    <input name={name} type={type} value={value} onChange={handleChange} onBlur={validate} />
+    <input name={name} type={type} value={value} onChange={handleChange} onBlur={() => validate(name, type, value)} />
   </label>
 );
 

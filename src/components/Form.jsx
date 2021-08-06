@@ -1,5 +1,6 @@
 import React from 'react';
 import { initFormData } from '../constants/constants';
+import { isFormValid, telFormatted, validateForm } from '../utils/validate';
 import InputCheckbox from './InputCheckbox';
 import InputRadio from './InputRadio';
 import InputType from './InputType';
@@ -8,15 +9,27 @@ import Select from './Select';
 const Form = ({ setCards }) => {
   const [formData, setFormData] = React.useState(initFormData);
 
+  const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = React.useState(true);
+
+  React.useEffect(() => {
+    const isValid = isFormValid(formData);
+    setIsSubmitBtnDisabled(!isValid);
+  }, [formData]);
+
   const handleChange = (event) => {
     const { name, type, checked } = event.target;
     let { value } = event.target;
     value = type === 'checkbox' ? checked : value;
-    setFormData((data) => ({ ...data, [name]: { ...name, value } }));
+    setFormData((data) => ({ ...data, [name]: { ...data[name], value } }));
   };
 
-  const validate = () => {
-    console.log('Triggered because this input lost focus');
+  const validate = (name, type, value) => {
+    const error = validateForm(value, type);
+    setFormData((data) => ({ ...data, [name]: { ...data[name], error } }));
+    if (type === 'tel' && !error) {
+      const tel = telFormatted(value);
+      setFormData((data) => ({ ...data, [name]: { value: tel, error: '' } }));
+    }
   };
 
   const handleSubmit = (event) => {
@@ -67,7 +80,9 @@ const Form = ({ setCards }) => {
       <Select value={formData.country.value} handleChange={handleChange} />
       <InputRadio checkedGender={formData.gender.value} handleChange={handleChange} />
       <InputCheckbox isChecked={formData.agreeToDataProcessing.value} handleChange={handleChange} />
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={isSubmitBtnDisabled}>
+        Submit
+      </button>
     </form>
   );
 };
