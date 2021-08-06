@@ -9,9 +9,9 @@ import uaeImg from '../assets/img/uae.jpg';
 export const cardsData = [
   {
     country: 'Черногория',
-    city: 'Ствети-Стефан',
+    city: 'Свети-Стефан',
     img: montenegroImg,
-    alt: 'Ствети-Стефан',
+    alt: 'Свети-Стефан',
     price: ' 13000RUB',
     comments: 70,
     views: 500,

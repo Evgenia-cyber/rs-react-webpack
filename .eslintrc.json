@@ -17,6 +17,7 @@
     "react/prop-types": "off",
     "prettier/prettier": "error",
     "linebreak-style": ["error", "unix"],
-    "comma-dangle": ["error", "only-multiline"]
+    "comma-dangle": ["error", "only-multiline"],
+    "object-curly-newline": "off"
   }
 }

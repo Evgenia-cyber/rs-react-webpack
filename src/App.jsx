@@ -1,19 +1,26 @@
 import React from 'react';
 import Card from './components/Card';
-import img from './img/img.jpg';
-import imgSVG from './img/youtube.svg';
+import SearchBar from './components/SearchBar';
+import { cardsData } from './data/cardsData';
 
-const App = () => {
-  const a = '7';
-  console.log(a);
-  return (
-    <>
-      <h1 className="container">App1</h1>
-      <Card />
-      <img src={img} alt="img" />
-      <img src={imgSVG} alt="img" />
-    </>
-  );
-};
+const cards = cardsData;
+
+const App = () => (
+  <>
+    <SearchBar />
+    {cards.map((card) => (
+      <Card
+        key={card.city}
+        country={card.country}
+        city={card.city}
+        img={card.img}
+        alt={card.alt}
+        price={card.price}
+        comments={card.comments}
+        views={card.views}
+      />
+    ))}
+  </>
+);
 
 export default App;
