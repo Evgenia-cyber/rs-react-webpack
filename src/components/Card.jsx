@@ -14,11 +14,11 @@ const Card = ({ country, city, img, alt, price, comments, views }) => (
       </p>
       <div className="card-info">
         <div className="card-info-views">
-          <img className="card-icon" src={viewsImg} alt="eye" />
+          <img className="card-icon" src={viewsImg} alt="глаз" />
           <span>{views}</span>
         </div>
         <div className="card-info-comments">
-          <img className="card-icon" src={commentsImg} alt="comments" />
+          <img className="card-icon" src={commentsImg} alt="комментарии" />
           <span>{comments}</span>
         </div>
       </div>

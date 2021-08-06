@@ -1,1 +1,10 @@
+.app-container {
+  margin: 3rem auto;
+  max-width: 1120px
+}
 
+.app-container .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center
+}
