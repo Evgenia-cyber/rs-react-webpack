@@ -1,0 +1,39 @@
+.form {
+  margin: 0 auto;
+  position: relative;
+  width: 450px;
+}
+
+.form .input,
+.form .submit-btn {
+  box-shadow: $box-shadow;
+  height: 35px;
+}
+
+.form .input {
+  border: $border;
+  border-radius: $border-radius 0 0 $border-radius;
+  padding-left: 2.5rem;
+  width: 70%;
+}
+
+.form .submit-btn {
+  background-color: $search-btn-color;
+  border: $border;
+  border-left: none;
+  border-radius: 0 $border-radius $border-radius 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  transition: background-color 0.3s;
+}
+
+.form .submit-btn:hover {
+  background-color: $search-btn-color-hover;
+  cursor: pointer;
+}
+
+.form .img {
+  left: 10px;
+  position: absolute;
+  top: 5px;
+}
