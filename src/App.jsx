@@ -1,28 +1,20 @@
 import React from 'react';
 import Card from './components/Card';
-import SearchBar from './components/SearchBar';
-import { cardsData } from './data/cardsData';
+import Form from './components/Form';
 
-const cards = cardsData;
+const App = () => {
+  const [cards, setCards] = React.useState([]);
 
-const App = () => (
-  <div className="app-container">
-    <SearchBar />
-    <div className="cards">
-      {cards.map((card) => (
-        <Card
-          key={card.city}
-          country={card.country}
-          city={card.city}
-          img={card.img}
-          alt={card.alt}
-          price={card.price}
-          comments={card.comments}
-          views={card.views}
-        />
-      ))}
+  return (
+    <div className="app-container">
+      <Form setCards={setCards} />
+      <div className="cards">
+        {cards.map((card) => (
+          <Card key={card} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
