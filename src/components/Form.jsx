@@ -4,6 +4,7 @@ import { isFormValid, telFormatted, validateForm } from '../utils/validate';
 import InputCheckbox from './InputCheckbox';
 import InputRadio from './InputRadio';
 import InputType from './InputType';
+import Loader from './Loader';
 import Select from './Select';
 
 const Form = ({ setCards }) => {
@@ -91,6 +92,7 @@ const Form = ({ setCards }) => {
       <button className="submit-btn" type="submit" disabled={isSubmitBtnDisabled}>
         Submit
       </button>
+      <Loader />
     </form>
   );
 };
