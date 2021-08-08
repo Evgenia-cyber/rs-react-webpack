@@ -1,0 +1,17 @@
+.card-container {
+  width: 320px;
+  margin: 2rem 1rem 1rem;
+  padding: 1rem;
+  border: $border;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  transition: box-shadow $duration, background-color $duration;
+
+  .card-info {
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}
