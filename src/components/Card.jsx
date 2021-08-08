@@ -2,21 +2,21 @@ import React from 'react';
 
 const Card = ({ name, phone, deliveryDate, country, gender }) => (
   <div className="card-container">
-    <h2 className="">{name}</h2>
-    <p className="">
-      <span>Phone: </span>
+    <h2>{name}</h2>
+    <p>
+      <span className="card-info">phone: </span>
       {phone}
     </p>
-    <p className="">
-      <span>Delivery date: </span>
+    <p>
+      <span className="card-info">delivery date: </span>
       {deliveryDate}
     </p>
-    <p className="">
-      <span>Country: </span>
+    <p>
+      <span className="card-info">country: </span>
       {country}
     </p>
-    <p className="">
-      <span>Gender: </span>
+    <p>
+      <span className="card-info">gender: </span>
       {gender}
     </p>
   </div>

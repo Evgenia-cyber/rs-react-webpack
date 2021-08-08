@@ -6,60 +6,12 @@
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   transition: box-shadow $duration, background-color $duration;
-}
 
-.card-container:hover {
-  background-color: $search-btn-color;
-  box-shadow: $box-shadow-hover;
-  cursor: pointer;
-}
-
-.card-container .img {
-  height: 300px;
-  object-fit: cover;
-  width: 100%;
-}
-
-.card-container .card-content-container {
-  padding: 1rem;
-}
-
-.card-container .card-country,
-.card-container .card-info-comments,
-.card-container .card-info-views,
-.card-container .card-price {
-  font-weight: 700;
-}
-
-.card-container .card-country {
-  font-size: 1.7rem;
-  padding-bottom: 0.5rem;
-}
-
-.card-container .card-city {
-  font-size: 1.3rem;
-}
-
-.card-container .card-price-text {
-  padding-bottom: 1rem;
-  padding-top: 0.5rem;
-}
-
-.card-container .card-price {
-  font-size: 1.2rem;
-}
-
-.card-container .card-info {
-  display: flex;
-  justify-content: space-between;
-}
-
-.card-container .card-info .card-info-comments,
-.card-container .card-info .card-info-views {
-  align-items: center;
-  display: flex;
-}
-
-.card-container .card-info .card-icon {
-  padding-right: 0.5rem;
+  .card-info {
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    font-weight: 600;
+    text-decoration: underline;
+  }
 }

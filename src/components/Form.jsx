@@ -88,7 +88,7 @@ const Form = ({ setCards }) => {
       <Select value={formData.country.value} handleChange={handleChange} />
       <InputRadio checkedGender={formData.gender.value} handleChange={handleChange} />
       <InputCheckbox isChecked={formData.agreeToDataProcessing.value} handleChange={handleChange} />
-      <button type="submit" disabled={isSubmitBtnDisabled}>
+      <button className="submit-btn" type="submit" disabled={isSubmitBtnDisabled}>
         Submit
       </button>
     </form>

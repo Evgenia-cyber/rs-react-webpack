@@ -1,40 +1,73 @@
 .form {
   display: flex;
   flex-direction: column;
+  max-width: 500px;
   margin: 0 auto;
-  width: 450px;
 }
 
-.form .input,
+.form .label {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.form .input-text,
+.form select,
 .form .submit-btn {
+  height: 40px;
+  border: $border;
+  border-radius: $border-radius;
   box-shadow: $box-shadow;
-  height: 35px;
 }
 
-.form .input {
-  border: $border;
-  border-radius: $border-radius 0 0 $border-radius;
-  padding-left: 2.5rem;
-  width: 70%;
+.form .input-text,
+.form select {
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .form .submit-btn {
+  width: 50%;
+  margin: 0 auto;
   background-color: $search-btn-color;
-  border: $border;
-  border-left: none;
-  border-radius: 0 $border-radius $border-radius 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  transition: background-color 0.3s;
+  transition: width $duration, background-color $duration;
+
+  &:disabled {
+    color: $color-disable;
+    border-color: $color-disable;
+    cursor: default;
+  }
+
+  &:hover:not([disabled]) {
+    width: 100%;
+    background-color: $search-btn-color-hover;
+    cursor: pointer;
+  }
 }
 
-.form .submit-btn:hover {
-  background-color: $search-btn-color-hover;
-  cursor: pointer;
+.form .genders {
+  display: flex;
+  flex-direction: column;
+
+  & .gender {
+    margin-right: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
-.form .img {
-  left: 10px;
-  position: absolute;
-  top: 5px;
+.form .checkbox {
+  display: flex;
+  align-items: baseline;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+
+  & .checkbox-mark {
+    margin-right: 0.25rem;
+  }
+}
+
+.error {
+  color: $color-error;
+  padding: 0.25rem;
 }

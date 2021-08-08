@@ -2,11 +2,18 @@ import React from 'react';
 
 const InputType = ({ label, name, type, value, handleChange, validate, error }) => (
   <label htmlFor={name}>
-    <p>
+    <p className="label">
       {label}
-      <span>{error}</span>
+      <span className="error">{error}</span>
     </p>
-    <input name={name} type={type} value={value} onChange={handleChange} onBlur={() => validate(name, type, value)} />
+    <input
+      className="input-text"
+      name={name}
+      type={type}
+      value={value}
+      onChange={handleChange}
+      onBlur={() => validate(name, type, value)}
+    />
   </label>
 );
 
