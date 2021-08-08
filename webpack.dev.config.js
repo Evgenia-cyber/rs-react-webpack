@@ -36,11 +36,11 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{ from: 'src/img', to: 'img' }],
+      patterns: [{ from: 'src/assets', to: 'img' }],
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      favicon: './src/img/favicon.png',
+      favicon: './src/assets/icons/favicon.png',
     }),
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],

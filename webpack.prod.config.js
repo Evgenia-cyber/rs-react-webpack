@@ -49,7 +49,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: { collapseWhitespace: true },
-      favicon: './src/img/favicon.png',
+      favicon: './src/assets/icons/favicon.png',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
