@@ -1,24 +1,24 @@
 import React from 'react';
 
-const Card = ({ country, city, img, alt, price, comments, views }) => (
+const Card = ({ name, phone, deliveryDate, country, gender }) => (
   <div className="card-container">
-    <img className="img" src={img} alt={alt} />
-    <div className="card-content-container">
-      <h2 className="card-country">{country}</h2>
-      <h3 className="card-city">{city}</h3>
-      <p className="card-price-text">
-        Стоимость тура:
-        <span className="card-price">{price}</span>
-      </p>
-      <div className="card-info">
-        <div className="card-info-views">
-          <span>{views}</span>
-        </div>
-        <div className="card-info-comments">
-          <span>{comments}</span>
-        </div>
-      </div>
-    </div>
+    <h2 className="">{name}</h2>
+    <p className="">
+      <span>Phone: </span>
+      {phone}
+    </p>
+    <p className="">
+      <span>Delivery date: </span>
+      {deliveryDate}
+    </p>
+    <p className="">
+      <span>Country: </span>
+      {country}
+    </p>
+    <p className="">
+      <span>Gender: </span>
+      {gender}
+    </p>
   </div>
 );
 

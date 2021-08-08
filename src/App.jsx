@@ -10,7 +10,14 @@ const App = () => {
       <Form setCards={setCards} />
       <div className="cards">
         {cards.map((card) => (
-          <Card key={card} />
+          <Card
+            key={card.phone}
+            name={card.name}
+            phone={card.phone}
+            deliveryDate={card.deliveryDate}
+            country={card.country}
+            gender={card.gender}
+          />
         ))}
       </div>
     </div>

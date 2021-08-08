@@ -34,7 +34,15 @@ const Form = ({ setCards }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setCards([]);
+    const newCard = {
+      name: `${formData.firstName.value} ${formData.lastName.value}`,
+      phone: formData.phone.value,
+      deliveryDate: formData.deliveryDate.value,
+      country: formData.country.value,
+      gender: formData.gender.value,
+    };
+    setCards((cards) => [...cards, newCard]);
+    setFormData(initFormData);
     // eslint-disable-next-line no-alert
     alert('Data sent successfully!');
   };
