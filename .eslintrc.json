@@ -20,6 +20,7 @@
     "comma-dangle": ["error", "only-multiline"],
     "object-curly-newline": "off",
     "react/jsx-one-expression-per-line": "off",
-    "max-len": ["error", { "code": 120 }]
+    "max-len": ["error", { "code": 120 }],
+    "operator-linebreak": "off"
   }
 }

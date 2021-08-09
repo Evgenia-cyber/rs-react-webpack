@@ -9,17 +9,22 @@ const Home = () => {
     <>
       <Form setCards={setCards} />
       <div className="cards">
-        {cards.map((card) => (
-          <Card
-            key={card.phone}
-            name={card.name}
-            phone={card.phone}
-            deliveryDate={card.deliveryDate}
-            country={card.country}
-            gender={card.gender}
-          />
-        ))}
+        {typeof cards !== 'string' &&
+          cards.length > 0 &&
+          cards.map((card) => (
+            <Card
+              key={card.url}
+              author={card.author}
+              title={card.title}
+              description={card.description}
+              publishedAt={card.publishedAt}
+              source={card.source}
+              url={card.url}
+              urlToImage={card.urlToImage}
+            />
+          ))}
       </div>
+      {typeof cards === 'string' && <div className="no-results">{cards}</div>}
     </>
   );
 };
