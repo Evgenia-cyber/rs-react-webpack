@@ -5,10 +5,10 @@
   margin: 0 auto;
 }
 
-// .form .label {
-//   font-size: 1.2rem;
-//   margin-bottom: 0.2rem;
-// }
+.form .label {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
 
 .form .search-bar,
 .form .submit-btn {
@@ -54,11 +54,12 @@
   }
 }
 
-.form .genders {
+.form .sorts {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 
-  & .gender {
+  & .sort {
     margin-right: 0.25rem;
     margin-bottom: 0.5rem;
   }

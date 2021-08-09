@@ -1,11 +1,15 @@
 import React from 'react';
 import axiosInstance from '../services/api';
-import { formattedDate, formattedDescription } from '../utils/formattedResultFromResponse';
 import SearchBar from './SearchBar';
 import SearchBtn from './SearchBtn';
+import SortBy from './SortBy';
+import { formattedDate, formattedDescription } from '../utils/formattedResultFromResponse';
+import { sorts } from '../constants/constants';
 
 const Form = ({ setCards }) => {
   const [searchValue, setSearchValue] = React.useState('');
+
+  const [sortBy, setSortBy] = React.useState(sorts[0]);
 
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -16,6 +20,7 @@ const Form = ({ setCards }) => {
       const response = await axiosInstance.get('v2/everything', {
         params: {
           q: searchValue,
+          sortBy,
         },
       });
       const { articles } = response.data;
@@ -47,7 +52,7 @@ const Form = ({ setCards }) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <SearchBar isLoading={isLoading} searchValue={searchValue} setSearchValue={setSearchValue} />
-
+      <SortBy checkedSortBy={sortBy} setSortBy={setSortBy} />
       <SearchBtn isLoading={isLoading} />
     </form>
   );
