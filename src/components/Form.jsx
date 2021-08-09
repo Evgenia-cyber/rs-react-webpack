@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React from 'react';
+import axiosInstance from '../services/api';
 import SearchBar from './SearchBar';
 import SearchBtn from './SearchBtn';
 
@@ -13,9 +13,11 @@ const Form = ({ setCards }) => {
     setCards([]);
     setIsLoading(true);
     try {
-      const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${searchValue}&apiKey=${process.env.REACT_APP_NEWSAPI_KEY}`
-      );
+      const response = await axiosInstance.get('v2/everything', {
+        params: {
+          q: searchValue,
+        },
+      });
       console.log('searchValue', searchValue);
       console.log('data', response.data);
     } catch (error) {
