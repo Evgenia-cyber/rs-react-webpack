@@ -4,12 +4,17 @@ import SearchBar from './SearchBar';
 import SearchBtn from './SearchBtn';
 import SortBy from './SortBy';
 import { formattedDate, formattedDescription } from '../utils/formattedResultFromResponse';
-import { sorts } from '../constants/constants';
+import { minPageSize, sorts } from '../constants/constants';
+import InputPageSize from './InputPageSize';
 
 const Form = ({ setCards }) => {
   const [searchValue, setSearchValue] = React.useState('');
 
   const [sortBy, setSortBy] = React.useState(sorts[0]);
+
+  const [pageSize, setPageSize] = React.useState(minPageSize);
+
+  // const [currentPage, setCurrentPage] = React.useState(defaultPageNumber);
 
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -21,6 +26,8 @@ const Form = ({ setCards }) => {
         params: {
           q: searchValue,
           sortBy,
+          pageSize,
+          // page: currentPage,
         },
       });
       const { articles } = response.data;
@@ -53,6 +60,7 @@ const Form = ({ setCards }) => {
     <form className="form" onSubmit={handleSubmit}>
       <SearchBar isLoading={isLoading} searchValue={searchValue} setSearchValue={setSearchValue} />
       <SortBy checkedSortBy={sortBy} setSortBy={setSortBy} />
+      <InputPageSize pageSize={pageSize} setPageSize={setPageSize} />
       <SearchBtn isLoading={isLoading} />
     </form>
   );
