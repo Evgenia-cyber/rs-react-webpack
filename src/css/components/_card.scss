@@ -1,5 +1,5 @@
 .card-container {
-  width: 320px;
+  width: 400px;
   margin: 2rem 1rem 1rem;
   padding: 1rem;
   border: $border;
@@ -7,11 +7,51 @@
   box-shadow: $box-shadow;
   transition: box-shadow $duration, background-color $duration;
 
-  .card-info {
-    display: inline-block;
-    margin-top: 0.5rem;
-    margin-right: 0.5rem;
+  .img {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+  }
+
+  .more-btn {
+    display: block;
+    height: 40px;
+    width: 50%;
+    margin: 1.5rem auto 1rem;
+    padding-top: 0.4rem;
+    text-align: center;
     font-weight: 600;
+    background-color: $search-btn-color;
+    border: $border;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    transition: width $duration, background-color $duration;
+
+    &:hover {
+      width: 100%;
+      background-color: $search-btn-color-hover;
+    }
+  }
+
+  .card-info {
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  .card-date {
+    font-weight: 500;
+  }
+
+  .card-info-label {
+    display: inline-block;
+    margin-right: 0.5rem;
     text-decoration: underline;
+  }
+
+  .card-title {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
   }
 }

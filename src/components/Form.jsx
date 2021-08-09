@@ -1,5 +1,5 @@
 import React from 'react';
-import axiosInstance from '../services/api';
+// import axiosInstance from '../services/api';
 import SearchBar from './SearchBar';
 import SearchBtn from './SearchBtn';
 
@@ -13,13 +13,13 @@ const Form = ({ setCards }) => {
     setCards([]);
     setIsLoading(true);
     try {
-      const response = await axiosInstance.get('v2/everything', {
-        params: {
-          q: searchValue,
-        },
-      });
-      console.log('searchValue', searchValue);
-      console.log('data', response.data);
+      // const response = await axiosInstance.get('v2/everything', {
+      //   params: {
+      //     q: searchValue,
+      //   },
+      // });
+      // console.log('searchValue', searchValue);
+      // console.log('data', response.data.articles);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);

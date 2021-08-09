@@ -1,24 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Card = ({ name, phone, deliveryDate, country, gender }) => (
+const Card = ({ author, title, description, publishedAt, source, url, urlToImage }) => (
   <div className="card-container">
-    <h2>{name}</h2>
-    <p>
-      <span className="card-info">phone: </span>
-      {phone}
+    <img className="img" src={urlToImage} alt="" />
+    <p className="card-info">
+      <span className="card-info-label">Author: </span>
+      {author}
     </p>
-    <p>
-      <span className="card-info">delivery date: </span>
-      {deliveryDate}
+    <p className="card-info">
+      <span className="card-info-label">Source: </span>
+      {source}
     </p>
-    <p>
-      <span className="card-info">country: </span>
-      {country}
-    </p>
-    <p>
-      <span className="card-info">gender: </span>
-      {gender}
-    </p>
+    <p className="card-info card-date">{publishedAt}</p>
+    <h2 className="card-title">{title}</h2>
+    <p>{description}</p>
+    <Link to={{ pathname: url }} target="_blank" rel="noopener noreferrer">
+      <span className="more-btn">More info</span>
+    </Link>
   </div>
 );
 
