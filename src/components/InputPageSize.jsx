@@ -9,7 +9,7 @@ const InputPageSize = ({ pageSize, setPageSize }) => {
 
   return (
     <label className="label" htmlFor="page-size">
-      Number of results per page (from 10 to 100):
+      Number of results per page (from {minPageSize} to {maxPageSize}):
       <input
         className="page-size-input"
         name="page-size"
