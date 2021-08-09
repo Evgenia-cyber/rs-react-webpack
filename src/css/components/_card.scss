@@ -1,4 +1,7 @@
 .card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 400px;
   margin: 2rem 1rem 1rem;
   padding: 1rem;
