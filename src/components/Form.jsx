@@ -14,9 +14,10 @@ const Form = ({ setCards }) => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${setSearchValue}&apiKey=${process.env.REACT_APP_NEWSAPI_KEY}`
+        `https://newsapi.org/v2/everything?q=${searchValue}&apiKey=${process.env.REACT_APP_NEWSAPI_KEY}`
       );
-      console.log(response.data);
+      console.log('searchValue', searchValue);
+      console.log('data', response.data);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
