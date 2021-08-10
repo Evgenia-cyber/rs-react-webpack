@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../components/Card';
 import Form from '../components/Form';
 import Paginator from '../components/Paginator';
-import { minPageSize, sorts } from '../constants/constants';
+import { defaultCurrentPage, minPageSize, sorts } from '../constants/constants';
 
 const Home = () => {
   const [searchValue, setSearchValue] = React.useState('');
@@ -11,9 +11,11 @@ const Home = () => {
 
   const [pageSize, setPageSize] = React.useState(minPageSize);
 
-  const [totalPages, setTotalPages] = React.useState('0');
+  const [totalPages, setTotalPages] = React.useState(0);
 
-  const [currentPage, setCurrentPage] = React.useState('1');
+  const [currentPage, setCurrentPage] = React.useState(defaultCurrentPage);
+
+  const [isPaginatorBtnClicked, setIsPaginatorBtnClicked] = React.useState(false);
 
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -25,6 +27,7 @@ const Home = () => {
         searchValue={searchValue}
         sortBy={sortBy}
         pageSize={pageSize}
+        currentPage={currentPage}
         isLoading={isLoading}
         setCards={setCards}
         setIsLoading={setIsLoading}
@@ -33,6 +36,7 @@ const Home = () => {
         setPageSize={setPageSize}
         setTotalPages={setTotalPages}
         setCurrentPage={setCurrentPage}
+        setIsPaginatorBtnClicked={setIsPaginatorBtnClicked}
       />
       {typeof cards !== 'string' && cards.length > 0 && (
         <>
@@ -42,6 +46,8 @@ const Home = () => {
             pageSize={pageSize}
             totalPages={totalPages}
             currentPage={currentPage}
+            isPaginatorBtnClicked={isPaginatorBtnClicked}
+            setIsPaginatorBtnClicked={setIsPaginatorBtnClicked}
             setCurrentPage={setCurrentPage}
             setCards={setCards}
             setIsLoading={setIsLoading}

@@ -11,52 +11,59 @@ const Paginator = ({
   setCurrentPage,
   setCards,
   setIsLoading,
+  isPaginatorBtnClicked,
+  setIsPaginatorBtnClicked,
 }) => {
   React.useEffect(async () => {
-    setIsLoading(true);
-    try {
-      const response = await axiosInstance.get('v2/everything', {
-        params: {
-          q: searchValue,
-          sortBy,
-          pageSize,
-          page: currentPage,
-        },
-      });
-      const { articles } = response.data;
-      const formattedResponse = articles.map(
-        ({ author, title, description, publishedAt, source, url, urlToImage }) => ({
-          author,
-          title,
-          description: formattedDescription(description),
-          publishedAt: formattedDate(publishedAt),
-          source: source.name,
-          url,
-          urlToImage,
-        })
-      );
-      setCards(formattedResponse);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
-      // eslint-disable-next-line no-alert
-      alert(error);
-    } finally {
-      setIsLoading(false);
+    if (isPaginatorBtnClicked) {
+      setIsLoading(true);
+      try {
+        const response = await axiosInstance.get('v2/everything', {
+          params: {
+            q: searchValue,
+            sortBy,
+            pageSize,
+            page: currentPage,
+          },
+        });
+        const { articles } = response.data;
+        const formattedResponse = articles.map(
+          ({ author, title, description, publishedAt, source, url, urlToImage }) => ({
+            author,
+            title,
+            description: formattedDescription(description),
+            publishedAt: formattedDate(publishedAt),
+            source: source.name,
+            url,
+            urlToImage,
+          })
+        );
+        setCards(formattedResponse);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+        // eslint-disable-next-line no-alert
+        alert(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }, [currentPage]);
+  }, [currentPage, isPaginatorBtnClicked]);
 
   const handleClick = (event) => {
     const value = event.target.innerText;
     setCurrentPage(value);
+    setIsPaginatorBtnClicked(true);
   };
 
   const handleClickToPrevClick = () => {
     setCurrentPage((value) => value - 1);
+    setIsPaginatorBtnClicked(true);
   };
 
   const handleToNextClick = () => {
     setCurrentPage((value) => Number(value) + 1);
+    setIsPaginatorBtnClicked(true);
   };
 
   return (

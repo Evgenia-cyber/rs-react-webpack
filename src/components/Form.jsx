@@ -5,11 +5,13 @@ import SearchBtn from './SearchBtn';
 import SortBy from './SortBy';
 import { formattedDate, formattedDescription } from '../utils/formattedResultFromResponse';
 import InputPageSize from './InputPageSize';
+import { defaultCurrentPage } from '../constants/constants';
 
 const Form = ({
   searchValue,
   sortBy,
   pageSize,
+  currentPage,
   isLoading,
   setCards,
   setIsLoading,
@@ -18,9 +20,11 @@ const Form = ({
   setPageSize,
   setTotalPages,
   setCurrentPage,
+  setIsPaginatorBtnClicked,
 }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsPaginatorBtnClicked(false);
     setIsLoading(true);
     try {
       const response = await axiosInstance.get('v2/everything', {
@@ -28,7 +32,7 @@ const Form = ({
           q: searchValue,
           sortBy,
           pageSize,
-          page: '1',
+          page: defaultCurrentPage,
         },
       });
       const { articles } = response.data;
@@ -48,7 +52,9 @@ const Form = ({
         );
         setCards(formattedResponse);
         const totalPages = Math.ceil(response.data.totalResults / pageSize);
-        setCurrentPage('1');
+        if (currentPage !== defaultCurrentPage) {
+          setCurrentPage(defaultCurrentPage);
+        }
         setTotalPages(totalPages);
       }
     } catch (error) {
