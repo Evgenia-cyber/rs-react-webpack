@@ -7,11 +7,12 @@
 
 .form .label {
   font-size: 1.2rem;
+  margin-top: 1rem;
   margin-bottom: 0.2rem;
 }
 
-.form .input-text,
-.form select,
+.form .search-bar,
+.form .page-size-input,
 .form .submit-btn {
   height: 40px;
   border: $border;
@@ -19,17 +20,26 @@
   box-shadow: $box-shadow;
 }
 
-.form .input-text,
-.form select {
+.form .search {
+  position: relative;
+}
+
+.form .search-icon {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+}
+
+.form .search-bar {
   width: 100%;
-  padding-left: 0.5rem;
+  padding-left: 2.5rem;
   padding-right: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .form .submit-btn {
   width: 50%;
-  margin: 0 auto;
+  margin: 1rem auto 0;
   background-color: $search-btn-color;
   transition: width $duration, background-color $duration;
 
@@ -46,28 +56,18 @@
   }
 }
 
-.form .genders {
+.form .sorts {
   display: flex;
   flex-direction: column;
 
-  & .gender {
+  & .sort {
     margin-right: 0.25rem;
     margin-bottom: 0.5rem;
   }
 }
 
-.form .checkbox {
-  display: flex;
-  align-items: baseline;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-
-  & .checkbox-mark {
-    margin-right: 0.25rem;
-  }
-}
-
-.error {
-  color: $color-error;
-  padding: 0.25rem;
+.form .page-size-input {
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
 }
