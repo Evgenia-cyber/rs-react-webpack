@@ -6,9 +6,7 @@ import { formattedDate, formattedDescription } from '../utils/formattedResultFro
 const Paginator = ({ searchValue, sortBy, pageSize, totalPages, setCards, setIsLoading }) => {
   const [currentPage, setCurrentPage] = React.useState(defaultPageNumber);
 
-  const handleClick2 = async (event) => {
-    const value = event.target.innerText;
-    setCurrentPage(value);
+  React.useEffect(async () => {
     setIsLoading(true);
     try {
       const response = await axiosInstance.get('v2/everything', {
@@ -43,7 +41,7 @@ const Paginator = ({ searchValue, sortBy, pageSize, totalPages, setCards, setIsL
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [currentPage]);
 
   const handleClick = (event) => {
     const value = event.target.innerText;
@@ -61,7 +59,7 @@ const Paginator = ({ searchValue, sortBy, pageSize, totalPages, setCards, setIsL
   return (
     <div className="paginator">
       {currentPage > 1 && (
-        <button className="paginator-btn" type="button" onClick={handleClick2}>
+        <button className="paginator-btn" type="button" onClick={handleClick}>
           1
         </button>
       )}
