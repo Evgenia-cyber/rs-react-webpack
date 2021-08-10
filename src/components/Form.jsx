@@ -4,20 +4,21 @@ import SearchBar from './SearchBar';
 import SearchBtn from './SearchBtn';
 import SortBy from './SortBy';
 import { formattedDate, formattedDescription } from '../utils/formattedResultFromResponse';
-import { minPageSize, sorts } from '../constants/constants';
+import { defaultPageNumber } from '../constants/constants';
 import InputPageSize from './InputPageSize';
 
-const Form = ({ setCards }) => {
-  const [searchValue, setSearchValue] = React.useState('');
-
-  const [sortBy, setSortBy] = React.useState(sorts[0]);
-
-  const [pageSize, setPageSize] = React.useState(minPageSize);
-
-  // const [currentPage, setCurrentPage] = React.useState(defaultPageNumber);
-
-  const [isLoading, setIsLoading] = React.useState(false);
-
+const Form = ({
+  searchValue,
+  sortBy,
+  pageSize,
+  isLoading,
+  setCards,
+  setIsLoading,
+  setSearchValue,
+  setSortBy,
+  setPageSize,
+  setTotalPages,
+}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -27,7 +28,7 @@ const Form = ({ setCards }) => {
           q: searchValue,
           sortBy,
           pageSize,
-          // page: currentPage,
+          page: defaultPageNumber,
         },
       });
       const { articles } = response.data;
@@ -46,6 +47,8 @@ const Form = ({ setCards }) => {
         })
       );
       setCards(formattedResponse);
+      const totalPages = Math.ceil(response.data.totalResults / pageSize);
+      setTotalPages(totalPages);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
