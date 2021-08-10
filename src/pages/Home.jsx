@@ -13,6 +13,8 @@ const Home = () => {
 
   const [totalPages, setTotalPages] = React.useState('0');
 
+  const [currentPage, setCurrentPage] = React.useState('1');
+
   const [isLoading, setIsLoading] = React.useState(false);
 
   const [cards, setCards] = React.useState([]);
@@ -30,6 +32,7 @@ const Home = () => {
         setSortBy={setSortBy}
         setPageSize={setPageSize}
         setTotalPages={setTotalPages}
+        setCurrentPage={setCurrentPage}
       />
       {typeof cards !== 'string' && cards.length > 0 && (
         <>
@@ -38,6 +41,8 @@ const Home = () => {
             sortBy={sortBy}
             pageSize={pageSize}
             totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
             setCards={setCards}
             setIsLoading={setIsLoading}
           />

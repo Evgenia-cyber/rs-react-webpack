@@ -1,11 +1,17 @@
 import React from 'react';
-import { defaultPageNumber } from '../constants/constants';
 import axiosInstance from '../services/api';
 import { formattedDate, formattedDescription } from '../utils/formattedResultFromResponse';
 
-const Paginator = ({ searchValue, sortBy, pageSize, totalPages, setCards, setIsLoading }) => {
-  const [currentPage, setCurrentPage] = React.useState(defaultPageNumber);
-
+const Paginator = ({
+  searchValue,
+  sortBy,
+  pageSize,
+  totalPages,
+  currentPage,
+  setCurrentPage,
+  setCards,
+  setIsLoading,
+}) => {
   React.useEffect(async () => {
     setIsLoading(true);
     try {

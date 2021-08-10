@@ -4,7 +4,6 @@ import SearchBar from './SearchBar';
 import SearchBtn from './SearchBtn';
 import SortBy from './SortBy';
 import { formattedDate, formattedDescription } from '../utils/formattedResultFromResponse';
-import { defaultPageNumber } from '../constants/constants';
 import InputPageSize from './InputPageSize';
 
 const Form = ({
@@ -18,6 +17,7 @@ const Form = ({
   setSortBy,
   setPageSize,
   setTotalPages,
+  setCurrentPage,
 }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,7 +28,7 @@ const Form = ({
           q: searchValue,
           sortBy,
           pageSize,
-          page: defaultPageNumber,
+          page: '1',
         },
       });
       const { articles } = response.data;
@@ -48,6 +48,7 @@ const Form = ({
         );
         setCards(formattedResponse);
         const totalPages = Math.ceil(response.data.totalResults / pageSize);
+        setCurrentPage('1');
         setTotalPages(totalPages);
       }
     } catch (error) {
