@@ -13,11 +13,12 @@
     &::after {
       position: absolute;
       content: '';
-      left: 0;
+      left: 50%;
       top: 21px;
       width: 0;
       height: 2px;
       background-color: $black;
+      transform: translateX(-50%);
       transition: width $duration;
     }
 
