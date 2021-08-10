@@ -32,23 +32,24 @@ const Form = ({
         },
       });
       const { articles } = response.data;
-      if (!articles.length) {
+      if (articles.length === 0) {
         setCards(`Sorry, your search "${searchValue}" did not return any results.`);
+      } else {
+        const formattedResponse = articles.map(
+          ({ author, title, description, publishedAt, source, url, urlToImage }) => ({
+            author,
+            title,
+            description: formattedDescription(description),
+            publishedAt: formattedDate(publishedAt),
+            source: source.name,
+            url,
+            urlToImage,
+          })
+        );
+        setCards(formattedResponse);
+        const totalPages = Math.ceil(response.data.totalResults / pageSize);
+        setTotalPages(totalPages);
       }
-      const formattedResponse = articles.map(
-        ({ author, title, description, publishedAt, source, url, urlToImage }) => ({
-          author,
-          title,
-          description: formattedDescription(description),
-          publishedAt: formattedDate(publishedAt),
-          source: source.name,
-          url,
-          urlToImage,
-        })
-      );
-      setCards(formattedResponse);
-      const totalPages = Math.ceil(response.data.totalResults / pageSize);
-      setTotalPages(totalPages);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);

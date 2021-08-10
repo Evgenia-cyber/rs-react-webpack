@@ -18,9 +18,6 @@ const Paginator = ({ searchValue, sortBy, pageSize, totalPages, setCards, setIsL
         },
       });
       const { articles } = response.data;
-      if (!articles.length) {
-        setCards(`Sorry, your search "${searchValue}" did not return any results.`);
-      }
       const formattedResponse = articles.map(
         ({ author, title, description, publishedAt, source, url, urlToImage }) => ({
           author,
