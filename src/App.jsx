@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import Header from './components/Header';
 import About from './pages/About';
 import Home from './pages/Home';
@@ -7,10 +8,24 @@ import Home from './pages/Home';
 const App = () => (
   <div className="app-container">
     <Header />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/about" component={About} />
-    </Switch>
+    <Route exact path="/">
+      {({ match }) => (
+        <CSSTransition classNames="page-animation" in={match != null} timeout={{ enter: 500, exit: 350 }} unmountOnExit>
+          <div className="page-animation">
+            <Home />
+          </div>
+        </CSSTransition>
+      )}
+    </Route>
+    <Route exact path="/about">
+      {({ match }) => (
+        <CSSTransition classNames="page-animation" in={match != null} timeout={{ enter: 500, exit: 350 }} unmountOnExit>
+          <div className="page-animation">
+            <About />
+          </div>
+        </CSSTransition>
+      )}
+    </Route>
   </div>
 );
 
