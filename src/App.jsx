@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Header from './components/Header';
 import About from './pages/About';
+import Details from './pages/Details';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
@@ -25,6 +26,7 @@ const App = () => {
             <Switch location={location}>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
+              <Route path="/details/:cardIndex" component={Details} />
               <Route path="*" component={NotFound} />
             </Switch>
           </div>

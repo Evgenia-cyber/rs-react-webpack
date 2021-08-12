@@ -5,6 +5,8 @@ import Paginator from '../components/Paginator';
 import { defaultCurrentPage, minPageSize, sorts } from '../constants/constants';
 
 const Home = () => {
+  const [cards, setCards] = React.useState([]);
+
   const [searchValue, setSearchValue] = React.useState('');
 
   const [sortBy, setSortBy] = React.useState(sorts[0]);
@@ -18,8 +20,6 @@ const Home = () => {
   const [isPaginatorBtnClicked, setIsPaginatorBtnClicked] = React.useState(false);
 
   const [isLoading, setIsLoading] = React.useState(false);
-
-  const [cards, setCards] = React.useState([]);
 
   return (
     <>
@@ -53,7 +53,7 @@ const Home = () => {
             setIsLoading={setIsLoading}
           />
           <div className="cards">
-            {cards.map((card) => (
+            {cards.map((card, index) => (
               <Card
                 key={card.url}
                 author={card.author}
@@ -61,8 +61,10 @@ const Home = () => {
                 description={card.description}
                 publishedAt={card.publishedAt}
                 source={card.source}
-                url={card.url}
                 urlToImage={card.urlToImage}
+                url={card.url}
+                content={card.content}
+                index={index}
               />
             ))}
           </div>

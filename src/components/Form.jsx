@@ -40,14 +40,15 @@ const Form = ({
         setCards(`Sorry, your search "${searchValue}" did not return any results.`);
       } else {
         const formattedResponse = articles.map(
-          ({ author, title, description, publishedAt, source, url, urlToImage }) => ({
+          ({ author, title, description, publishedAt, source, urlToImage, url, content }) => ({
             author,
             title,
             description: formattedDescription(description),
             publishedAt: formattedDate(publishedAt),
             source: source.name,
-            url,
             urlToImage,
+            url,
+            content,
           })
         );
         setCards(formattedResponse);

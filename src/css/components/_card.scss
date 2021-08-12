@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 400px;
+  width: 365px;
   margin: 2rem 1rem 1rem;
   padding: 1rem;
   border: $border;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   transition: box-shadow $duration, background-color $duration;
+
+  &.card-container-details {
+    width: 600px;
+  }
 
   .img {
     width: 100%;
