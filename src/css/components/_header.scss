@@ -1,0 +1,36 @@
+.header {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+
+  .menu {
+    display: flex;
+    column-gap: 1rem;
+    justify-content: center;
+  }
+
+  .menu-item {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      left: 50%;
+      top: 21px;
+      width: 0;
+      height: 2px;
+      background-color: $black;
+      transform: translateX(-50%);
+      transition: width $duration;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  .selected {
+    font-weight: 600;
+    color: $border-color;
+    border-bottom: $border;
+  }
+}

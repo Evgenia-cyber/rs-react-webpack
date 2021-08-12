@@ -1,25 +1,37 @@
 import React from 'react';
-import Card from './components/Card';
-import Form from './components/Form';
+import { Route, Switch, useLocation } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Header from './components/Header';
+import About from './pages/About';
+import Details from './pages/Details';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 const App = () => {
-  const [cards, setCards] = React.useState([]);
+  const location = useLocation();
 
   return (
     <div className="app-container">
-      <Form setCards={setCards} />
-      <div className="cards">
-        {cards.map((card) => (
-          <Card
-            key={card.phone}
-            name={card.name}
-            phone={card.phone}
-            deliveryDate={card.deliveryDate}
-            country={card.country}
-            gender={card.gender}
-          />
-        ))}
-      </div>
+      <Header />
+      <TransitionGroup>
+        <CSSTransition
+          classNames="page-animation"
+          key={location.pathname}
+          timeout={{
+            enter: 500,
+            exit: 350,
+          }}
+        >
+          <div className="page-animation">
+            <Switch location={location}>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route path="/details/:cardIndex" component={Details} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   );
 };

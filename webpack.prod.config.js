@@ -6,6 +6,8 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const { extendDefaultPlugins } = require('svgo');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 
 module.exports = {
   mode: 'production',
@@ -42,6 +44,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.config().parsed),
+    }),
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       failOnError: true,

@@ -3,6 +3,8 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 
 module.exports = {
   mode: 'development',
@@ -46,6 +48,9 @@ module.exports = {
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       failOnError: true,
     }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.config().parsed),
+    }),
   ],
   devtool: 'inline-source-map',
   devServer: {
@@ -53,5 +58,6 @@ module.exports = {
     port: 3000,
     hot: true,
     open: true,
+    historyApiFallback: true,
   },
 };

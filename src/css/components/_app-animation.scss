@@ -1,0 +1,28 @@
+.app-container {
+  position: relative;
+  margin: 3rem auto;
+  max-width: 1120px;
+}
+
+.page-animation {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.page-animation-enter {
+  opacity: 0;
+  transform: translateX(-150%);
+}
+.page-animation-enter-active {
+  opacity: 1;
+  transform: translateX(-50%);
+  transition: opacity 500ms, transform 500ms;
+}
+.page-animation-exit {
+  opacity: 1;
+}
+.page-animation-exit-active {
+  opacity: 0;
+  transform: translateX(150%);
+  transition: opacity 150ms, transform 350ms;
+}

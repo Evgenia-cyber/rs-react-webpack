@@ -1,0 +1,41 @@
+.paginator {
+  margin: 3rem auto;
+  max-width: 1120px;
+  text-align: center;
+
+  .paginator-btn {
+    padding: 5px 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+    border: $border;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    background-color: $search-btn-color;
+    transition: background-color $duration, box-shadow $duration;
+
+    &:hover {
+      background-color: $search-btn-color-hover;
+      cursor: pointer;
+      box-shadow: $box-shadow-hover;
+    }
+  }
+
+  .paginator-btn-active {
+    background-color: $search-btn-color-active;
+  }
+
+  .paginator-dot {
+    display: inline-block;
+    width: 27px;
+    padding: 7px;
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px dotted $black;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
