@@ -1,57 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Card from '../components/Card';
 import Form from '../components/Form';
 import Paginator from '../components/Paginator';
-import { defaultCurrentPage, minPageSize, sorts } from '../constants/constants';
+import { cardsSlice } from '../redux/slices/homeSlice';
 
 const Home = () => {
-  const [cards, setCards] = React.useState([]);
-
-  const [searchValue, setSearchValue] = React.useState('');
-
-  const [sortBy, setSortBy] = React.useState(sorts[0]);
-
-  const [pageSize, setPageSize] = React.useState(minPageSize);
-
-  const [totalPages, setTotalPages] = React.useState(0);
-
-  const [currentPage, setCurrentPage] = React.useState(defaultCurrentPage);
-
-  const [isPaginatorBtnClicked, setIsPaginatorBtnClicked] = React.useState(false);
-
-  const [isLoading, setIsLoading] = React.useState(false);
+  const cards = useSelector(cardsSlice);
 
   return (
     <>
-      <Form
-        searchValue={searchValue}
-        sortBy={sortBy}
-        pageSize={pageSize}
-        currentPage={currentPage}
-        isLoading={isLoading}
-        setCards={setCards}
-        setIsLoading={setIsLoading}
-        setSearchValue={setSearchValue}
-        setSortBy={setSortBy}
-        setPageSize={setPageSize}
-        setTotalPages={setTotalPages}
-        setCurrentPage={setCurrentPage}
-        setIsPaginatorBtnClicked={setIsPaginatorBtnClicked}
-      />
+      <Form />
       {typeof cards !== 'string' && cards.length > 0 && (
         <>
-          <Paginator
-            searchValue={searchValue}
-            sortBy={sortBy}
-            pageSize={pageSize}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            isPaginatorBtnClicked={isPaginatorBtnClicked}
-            setIsPaginatorBtnClicked={setIsPaginatorBtnClicked}
-            setCurrentPage={setCurrentPage}
-            setCards={setCards}
-            setIsLoading={setIsLoading}
-          />
+          <Paginator />
           <div className="cards">
             {cards.map((card, index) => (
               <Card

@@ -1,10 +1,16 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { maxPageSize, minPageSize } from '../constants/constants';
+import { pageSizeSlice, setPageSize } from '../redux/slices/homeSlice';
 
-const InputPageSize = ({ pageSize, setPageSize }) => {
+const InputPageSize = () => {
+  const dispatch = useDispatch();
+
+  const pageSize = useSelector(pageSizeSlice);
+
   const handleChange = (event) => {
     const { value } = event.target;
-    setPageSize(value);
+    dispatch(setPageSize(value));
   };
 
   return (

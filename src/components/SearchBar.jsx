@@ -1,11 +1,18 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Loader from './Loader';
 import magnifierImg from '../assets/icons/magnifier.svg';
+import { isLoadingSlice, searchValueSlice, setSearchValue } from '../redux/slices/homeSlice';
 
-const SearchBar = ({ isLoading, searchValue, setSearchValue }) => {
+const SearchBar = () => {
+  const dispatch = useDispatch();
+
+  const searchValue = useSelector(searchValueSlice);
+  const isLoading = useSelector(isLoadingSlice);
+
   const handleChange = (event) => {
     const { value } = event.target;
-    setSearchValue(value);
+    dispatch(setSearchValue(value));
   };
 
   return (

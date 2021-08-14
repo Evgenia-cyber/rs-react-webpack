@@ -1,69 +1,47 @@
 import React from 'react';
-import axiosInstance from '../services/api';
-import { formattedDate, formattedDescription } from '../utils/formattedResultFromResponse';
-
-const Paginator = ({
-  searchValue,
-  sortBy,
-  pageSize,
-  totalPages,
-  currentPage,
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  currentPageSlice,
+  fetchArticlesWhenPaginatorBtnClicked,
+  isPaginatorBtnClickedSlice,
+  pageSizeSlice,
+  searchValueSlice,
   setCurrentPage,
-  setCards,
-  setIsLoading,
-  isPaginatorBtnClicked,
   setIsPaginatorBtnClicked,
-}) => {
+  sortBySlice,
+  totalPagesSlice,
+} from '../redux/slices/homeSlice';
+
+const Paginator = () => {
+  const dispatch = useDispatch();
+
+  const searchValue = useSelector(searchValueSlice);
+  const sortBy = useSelector(sortBySlice);
+  const pageSize = useSelector(pageSizeSlice);
+  const currentPage = useSelector(currentPageSlice);
+  const totalPages = useSelector(totalPagesSlice);
+  const isPaginatorBtnClicked = useSelector(isPaginatorBtnClickedSlice);
+
   React.useEffect(async () => {
     if (isPaginatorBtnClicked) {
-      setIsLoading(true);
-      try {
-        const response = await axiosInstance.get('v2/everything', {
-          params: {
-            q: searchValue,
-            sortBy,
-            pageSize,
-            page: currentPage,
-          },
-        });
-        const { articles } = response.data;
-        const formattedResponse = articles.map(
-          ({ author, title, description, publishedAt, source, url, urlToImage }) => ({
-            author,
-            title,
-            description: formattedDescription(description),
-            publishedAt: formattedDate(publishedAt),
-            source: source.name,
-            url,
-            urlToImage,
-          })
-        );
-        setCards(formattedResponse);
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(error);
-        // eslint-disable-next-line no-alert
-        alert(error);
-      } finally {
-        setIsLoading(false);
-      }
+      dispatch(fetchArticlesWhenPaginatorBtnClicked(searchValue, sortBy, pageSize, currentPage));
     }
   }, [currentPage, isPaginatorBtnClicked]);
 
   const handleClick = (event) => {
     const value = event.target.innerText;
-    setCurrentPage(value);
-    setIsPaginatorBtnClicked(true);
+    dispatch(setCurrentPage(value));
+    dispatch(setIsPaginatorBtnClicked(true));
   };
 
   const handleClickToPrevClick = () => {
-    setCurrentPage((value) => value - 1);
-    setIsPaginatorBtnClicked(true);
+    dispatch(setCurrentPage((value) => value - 1));
+    dispatch(setIsPaginatorBtnClicked(true));
   };
 
   const handleToNextClick = () => {
-    setCurrentPage((value) => Number(value) + 1);
-    setIsPaginatorBtnClicked(true);
+    dispatch(setCurrentPage((value) => Number(value) + 1));
+    dispatch(setIsPaginatorBtnClicked(true));
   };
 
   return (
