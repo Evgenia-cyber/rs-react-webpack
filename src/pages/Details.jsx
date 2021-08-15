@@ -1,10 +1,13 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
+import { infoSlice, isRedirectToHomeSlice, setInfo, setIsRedirectToHome } from '../redux/slices/detailsSlice';
 
 const Details = () => {
-  const [info, setInfo] = React.useState('');
+  const dispatch = useDispatch();
 
-  const [isRedirectToHome, setIsRedirectToHome] = React.useState(false);
+  const info = useSelector(infoSlice);
+  const isRedirectToHome = useSelector(isRedirectToHomeSlice);
 
   const { pathname } = useLocation();
 
@@ -14,12 +17,12 @@ const Details = () => {
       card = JSON.parse(card);
       const pathnameFromCard = `/details/${card.index}`;
       if (pathnameFromCard !== pathname) {
-        setIsRedirectToHome(true);
+        dispatch(setIsRedirectToHome(true));
       } else {
-        setInfo(card);
+        dispatch(setInfo(card));
       }
     } else {
-      setIsRedirectToHome(true);
+      dispatch(setIsRedirectToHome(true));
     }
   }, []);
 
