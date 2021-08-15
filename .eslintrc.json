@@ -26,6 +26,8 @@
     "object-curly-newline": "off",
     "react/jsx-one-expression-per-line": "off",
     "max-len": ["error", { "code": 120 }],
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "implicit-arrow-linebreak": "off"
   }
 }

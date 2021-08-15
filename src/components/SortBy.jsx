@@ -1,10 +1,16 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { sorts } from '../constants/constants';
+import { setSortBy, sortBySlice } from '../redux/slices/homeSlice';
 
-const SortBy = ({ checkedSortBy, setSortBy }) => {
+const SortBy = () => {
+  const dispatch = useDispatch();
+
+  const checkedSortBy = useSelector(sortBySlice);
+
   const handleChange = (event) => {
     const { value } = event.target;
-    setSortBy(value);
+    dispatch(setSortBy(value));
   };
 
   return (
