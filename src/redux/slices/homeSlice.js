@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { defaultCurrentPage, minPageSize, sorts } from '../../constants/constants';
-import axiosInstance from '../../services/api';
-import { formattedDate, formattedDescription } from '../../utils/formattedResultFromResponse';
+import { fetchArticles } from '../../services/api';
+import { formattedResponse } from '../../utils/formattedResultFromResponse';
 
 const initialState = {
   cards: [],
@@ -60,31 +60,12 @@ export const fetchArticlesAfterSubmit = (searchValue, sortBy, pageSize, currentP
   dispatch(setIsPaginatorBtnClicked(false));
   dispatch(setIsLoading(true));
   try {
-    const response = await axiosInstance.get('v2/everything', {
-      params: {
-        q: searchValue,
-        sortBy,
-        pageSize,
-        page: defaultCurrentPage,
-      },
-    });
+    const response = await fetchArticles(searchValue, sortBy, pageSize);
     const { articles } = response.data;
     if (articles.length === 0) {
       dispatch(setCards(`Sorry, your search "${searchValue}" did not return any results.`));
     } else {
-      const formattedResponse = articles.map(
-        ({ author, title, description, publishedAt, source, urlToImage, url, content }) => ({
-          author,
-          title,
-          description: formattedDescription(description),
-          publishedAt: formattedDate(publishedAt),
-          source: source.name,
-          urlToImage,
-          url,
-          content,
-        })
-      );
-      dispatch(setCards(formattedResponse));
+      dispatch(setCards(formattedResponse(articles)));
       const totalPages = Math.ceil(response.data.totalResults / pageSize);
       if (currentPage !== defaultCurrentPage) {
         dispatch(setCurrentPage(defaultCurrentPage));
@@ -105,27 +86,9 @@ export const fetchArticlesWhenPaginatorBtnClicked =
   (searchValue, sortBy, pageSize, currentPage) => async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const response = await axiosInstance.get('v2/everything', {
-        params: {
-          q: searchValue,
-          sortBy,
-          pageSize,
-          page: currentPage,
-        },
-      });
+      const response = await fetchArticles(searchValue, sortBy, pageSize, currentPage);
       const { articles } = response.data;
-      const formattedResponse = articles.map(
-        ({ author, title, description, publishedAt, source, url, urlToImage }) => ({
-          author,
-          title,
-          description: formattedDescription(description),
-          publishedAt: formattedDate(publishedAt),
-          source: source.name,
-          url,
-          urlToImage,
-        })
-      );
-      dispatch(setCards(formattedResponse));
+      dispatch(setCards(formattedResponse(articles)));
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
