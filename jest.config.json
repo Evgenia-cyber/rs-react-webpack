@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "collectCoverageFrom": ["**/src/*.{js,jsx}", "!**/node_modules/**", "!**/build/**"],
+  "coverageReporters": ["text"]
+}
