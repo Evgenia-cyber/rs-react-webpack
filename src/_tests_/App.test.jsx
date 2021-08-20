@@ -1,5 +1,19 @@
-describe('My Test Suite', () => {
-  it('My Test Case', () => {
-    expect(true).toEqual(true);
-  });
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import store from '../redux/store';
+import App from '../App';
+
+it('renders App without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>,
+    div
+  );
+  ReactDOM.unmountComponentAtNode(div);
 });
