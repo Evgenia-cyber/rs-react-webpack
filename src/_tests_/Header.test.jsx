@@ -10,7 +10,7 @@ import { createMemoryHistory } from 'history';
 import App from '../App';
 import store from '../redux/store';
 
-describe('Routing from the menu', () => {
+describe('Navigation from the menu', () => {
   it('should contain in url "/" after clicking on the menu item Home', () => {
     const history = createMemoryHistory();
     render(
