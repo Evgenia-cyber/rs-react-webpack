@@ -7,9 +7,11 @@ import '@testing-library/jest-dom';
 import { cleanup, render, screen } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { act } from 'react-dom/test-utils';
+import pretty from 'pretty';
 
 import store from '../redux/store';
 import App from '../App';
+import Home from '../pages/Home';
 
 let container = null;
 beforeEach(() => {
@@ -65,6 +67,19 @@ describe('Routing in the application', () => {
     );
 
     expect(screen.getByText(/Search/)).toBeInTheDocument();
+  });
+
+  it('should render Home page immediately after starting the application (with snapshot)', () => {
+    act(() => {
+      ReactDOM.render(
+        <Provider store={store}>
+          <Home />
+        </Provider>,
+        container
+      );
+    });
+
+    expect(pretty(container.innerHTML)).toMatchSnapshot();
   });
 
   it('should be in NotFound page if unknown url', () => {
