@@ -3,12 +3,16 @@ import { BrowserRouter, Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 
 import App from '../App';
 import store from '../redux/store';
+
+afterEach(() => {
+  cleanup();
+});
 
 describe('Navigation from the menu', () => {
   it('should contain in url "/" after clicking on the menu item Home', () => {
