@@ -1,4 +1,6 @@
-export const formattedDescription = (description) => `${description.slice(0, 100)}...`;
+// eslint-disable-next-line no-confusing-arrow
+export const formattedDescription = (description) =>
+  description.length > 103 ? `${description.slice(0, 100)}...` : description;
 
 export const formattedDate = (date) => {
   const d = new Date(date).toUTCString();

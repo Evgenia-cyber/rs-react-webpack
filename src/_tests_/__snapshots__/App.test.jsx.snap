@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routing in the application should render Home page immediately after starting the application (with snapshot) 1`] = `
+"<form class=\\"form\\"><label class=\\"search\\" for=\\"search\\">
+    <div class=\\"search-icon\\"><img src=\\"test-file-stub\\" alt=\\"magnifier\\"></div><input class=\\"search-bar\\" name=\\"search\\" type=\\"text\\" required=\\"\\" minlength=\\"3\\" maxlength=\\"40\\" placeholder=\\"Search...\\" value=\\"\\">
+  </label>
+  <div>
+    <p class=\\"label\\">Sort by:</p>
+    <div class=\\"sorts\\"><label for=\\"popularity\\"><input class=\\"sort\\" name=\\"sort\\" id=\\"popularity\\" type=\\"radio\\" value=\\"popularity\\" checked=\\"\\">popularity</label><label for=\\"relevancy\\"><input class=\\"sort\\" name=\\"sort\\" id=\\"relevancy\\" type=\\"radio\\" value=\\"relevancy\\">relevancy</label><label for=\\"publishedAt\\"><input class=\\"sort\\" name=\\"sort\\" id=\\"publishedAt\\" type=\\"radio\\" value=\\"publishedAt\\">publishedAt</label></div>
+  </div><label class=\\"label\\" for=\\"page-size\\">Number of results per page (from 2 to 10):<input class=\\"page-size-input\\" name=\\"page-size\\" type=\\"number\\" min=\\"2\\" max=\\"10\\" value=\\"2\\"></label><button class=\\"submit-btn\\" type=\\"submit\\">Search</button>
+</form>"
+`;
