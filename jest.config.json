@@ -1,7 +1,7 @@
 {
   "rootDir": ".",
   "verbose": true,
-  "collectCoverageFrom": ["**/src/**/*.{js,jsx}", "!**/node_modules/**", "!**/build/**"],
+  "collectCoverageFrom": ["**/src/**/*.{js,jsx}", "!**/node_modules/**", "!**/build/**", "!**/src/_tests_/**"],
   "coverageReporters": ["text", "html"],
   "transform": { "\\.[jt]sx?$": "babel-jest" },
   "moduleFileExtensions": ["js", "jsx"],
