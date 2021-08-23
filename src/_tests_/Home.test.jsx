@@ -61,3 +61,37 @@ describe('Home page testing when the results are received from the newsapi', () 
     expect(screen.getByText(/did not return any results/)).toBeInTheDocument();
   });
 });
+
+describe('Home page testing when the results are fetching from the newsapi', () => {
+  it('should render Loader', () => {
+    const initialState = {
+      home: { isLoading: true, cards: [] },
+    };
+
+    const { container } = render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+      { preloadedState: initialState }
+    );
+
+    expect(container.querySelector('.loader')).toBeInTheDocument();
+
+    expect(screen.queryByAltText('magnifier')).toBeNull();
+  });
+
+  it('should disabled SearchBtn', () => {
+    const initialState = {
+      home: { isLoading: true, cards: [] },
+    };
+
+    const { container } = render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+      { preloadedState: initialState }
+    );
+
+    expect(container.querySelector('.submit-btn')).toHaveAttribute('disabled');
+  });
+});
