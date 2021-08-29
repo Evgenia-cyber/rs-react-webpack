@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Hello from './components/HelloTemporaryExample';
+import App from './App';
 
-const renderApp = () => <Hello />;
+const renderApp = () => <App />;
 
 export default renderApp;

@@ -31,6 +31,7 @@ function createConfig({ target }) {
       path: dist,
       filename: name,
       chunkFilename: name,
+      publicPath: '/',
     },
 
     resolve: {
