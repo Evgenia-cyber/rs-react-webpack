@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const dotenv = require('dotenv');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+// target - 'client' or 'server'
 function createConfig({ target }) {
   // Root of project
   const root = join(__dirname, '../');

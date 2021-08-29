@@ -1,6 +1,7 @@
 {
   "name": "rs-react-webpack",
   "version": "1.0.0",
+  "main": "index.js",
   "dependencies": {
     "@babel/runtime": "^7.14.8",
     "@reduxjs/toolkit": "^1.6.1",
