@@ -2,8 +2,8 @@
 const { join } = require('path');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // target - 'client' or 'server'
 function createConfig({ target }) {
@@ -33,7 +33,7 @@ function createConfig({ target }) {
       filename: name,
       chunkFilename: name,
       publicPath: '/',
-      assetModuleFilename: 'assets/icons/[name][ext]',
+      clean: true,
     },
 
     resolve: {
@@ -53,8 +53,12 @@ function createConfig({ target }) {
           ],
         },
         {
-          test: /\.(png|gif|svg|jpe?g)$/,
+          test: /\.(png|gif|jpe?g)$/,
           type: 'asset/resource',
+        },
+        {
+          test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+          type: 'asset/inline',
         },
       ],
     },
@@ -70,9 +74,9 @@ function createConfig({ target }) {
         'typeof window': JSON.stringify(IS_CLIENT ? 'object' : 'undefined'),
         'process.env': JSON.stringify(dotenv.config().parsed),
       }),
-      // new CopyWebpackPlugin({
-      //   patterns: [{ from: 'src/assets', to: 'assets' }],
-      // }),
+      new CopyWebpackPlugin({
+        patterns: [{ from: 'src/assets', to: 'assets' }],
+      }),
     ],
     devtool: 'inline-source-map',
   };

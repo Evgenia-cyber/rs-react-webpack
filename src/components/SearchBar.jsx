@@ -17,7 +17,7 @@ const SearchBar = () => {
 
   return (
     <label className="search" htmlFor="search">
-      <div className="search-icon">{isLoading ? <Loader /> : <img src={magnifierImg} alt="magnifier" />}</div>
+      <div className="search-icon">{isLoading ? <Loader /> : <img src={magnifierImg} alt="" />}</div>
       <input
         className="search-bar"
         name="search"
