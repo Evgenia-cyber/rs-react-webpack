@@ -50,7 +50,6 @@ app.get('*', async (req, res) => {
       cssPath: 'main.css',
       jsPath: 'main.js',
       content,
-      // data: JSON.stringify(data),
     })
   );
 });
