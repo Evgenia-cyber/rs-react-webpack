@@ -19,15 +19,18 @@ app.get('*', async (req, res) => {
 
   const preloadedState = {
     home: { cards: [] },
-    //  home: { cards: [],
-    //  searchValue: '',
-    //  sortBy: sorts[0],
-    //  pageSize: minPageSize,
-    //  totalPages: 0,
-    //  currentPage: defaultCurrentPage,
-    //  isPaginatorBtnClicked: false,
-    //  isLoading: false,}
-    //  details: { info: '', isRedirectToHome: false },
+    details: { info: '' },
+
+    // all redux store:
+    /* home: { cards: [],
+     searchValue: '',
+     sortBy: sorts[0],
+     pageSize: minPageSize,
+     totalPages: 0,
+     currentPage: defaultCurrentPage,
+     isPaginatorBtnClicked: false,
+     isLoading: false,}
+     details: { info: '', isRedirectToHome: false }, */
   };
 
   const store = configureStore({
